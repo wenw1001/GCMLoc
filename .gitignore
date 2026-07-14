@@ -1,0 +1,37 @@
+# ---- datasets / large data (provide separately) ----
+KITTI_ODOMETRY/
+Argoverse/
+data/argoverse-tracking/
+data/itri_campus/
+data/*.bin
+*.h5
+
+# ---- model weights / checkpoints / results ----
+checkpoints/
+weights/
+ablation_results/
+*.tar
+*.pth
+*.ckpt
+
+# ---- build artifacts ----
+build/
+dist/
+*.egg-info/
+*.so
+*.o
+__pycache__/
+*.py[cod]
+
+# ---- outputs / logs ----
+runs/
+results*/
+timing_records.csv
+*.log
+iter_campus/
+
+# ---- editor / OS ----
+.vscode/
+.idea/
+.DS_Store
+*.swp
