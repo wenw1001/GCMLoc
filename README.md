@@ -1,4 +1,4 @@
-# GCMLoc: Global Cross-Modal Monocular Localization against LiDAR Point-Cloud Maps
+# GCMLoc: Monocular Vehicle Localization with LiDAR Maps via Semantic Enhancement and Global Coarse-to-Fine Cross-Modal Match
 
 [![Paper](https://img.shields.io/badge/Paper-TBD-b31b1b.svg)](#citation)
 [![Foundational arXiv](https://img.shields.io/badge/arXiv-2403.05002-b31b1b.svg)](https://arxiv.org/abs/2403.05002)
