@@ -1,0 +1,21 @@
+# Minimal dependencies of GCMLoc, pinned to the tested versions.
+# PyTorch is installed separately with the matching CUDA index (see README step 2):
+#   pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 \
+#       --extra-index-url https://download.pytorch.org/whl/cu121
+# The `visibility` CUDA extension is built locally via `python setup.py build_ext --inplace`.
+
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.3.3
+matplotlib==3.10.8
+opencv-python==4.13.0.92
+pillow==12.0.0
+h5py==3.16.0
+mathutils==3.3.0
+sacred==0.8.7
+tqdm==4.67.3
+
+# preprocessing only (map building / ITRI pipeline)
+open3d==0.19.0
+pykitti==0.3.1
+PyYAML==6.0.3
