@@ -1,0 +1,25 @@
+GCMLoc 問答整理
+
+1. train_mapping.py 主要在做什麼？
+- 它是訓練的主程式，管資料、loss、優化器、驗證和存檔。
+- 訓練的是整個網路，不是只有 GCM-Flow。
+- 特徵融合、heatmap decoder、GCM-Flow、pose regression 都寫在 models/ 資料夾裡。
+- train_mapping.py 只是建立模型後呼叫它，所以一次訓練就包含所有模組。
+
+2. checkpoint_mapping.tar 裡面有什麼？
+- 有整個模型的權重，不只 GCM-Flow。
+- 包含 heatmap decoder、融合模組、depth CNN、DINOv2 解凍的部分、pose regressor 等。
+- 另外還存了 optimizer、epoch、loss 和訓練設定，方便續訓和後面程式重建模型。
+
+3. 參數要在哪裡改？
+- 不用改程式，在 terminal 直接覆寫就好，例如：
+  python train_mapping.py with dataset=kitti epochs=120 batch_size=8 max_r=10 max_t=2
+- 可以這樣改的有：資料路徑、epochs、batch_size、學習率、max_t、max_r、模型大小等。
+- 寫死的有：網路架構、early stopping 的耐心值、loss 權重 0.6/0.4。這些要進程式改。
+
+4. checkpoint_loc_iter1/2/3.tar 是什麼？
+- 大致上是。它們是 train_loc.py（不是 train_mapping.py）由粗到細訓練三輪的結果。
+- 第 1 輪：從 mapping checkpoint 開始，max_r=10、max_t=2。
+- 第 2 輪：從第 1 輪最佳模型開始，max_r=2、max_t=1。
+- 第 3 輪：從第 2 輪最佳模型開始，max_r=1、max_t=0.6。
+- evaluate.py 會依序載入這三個檔案，一次比一次更精準地修正位姿。
